@@ -1,0 +1,23 @@
+# only be case sensitive if there is mixed case
+--smart-case
+
+# follow symlinks
+--follow
+
+# additional extension for types
+--type-set=haml=.haml
+--type-set=erb=.erb
+--type-add=html=.haml
+--type-add=html=.html.erb
+--type-add=css=.scss
+--type-add=css=.sass
+
+--type-add=js=.coffee
+--type-add=js=.jrl
+
+# custom types
+--type-set=cuke=.feature
+
+# don't search logs or tmp folders
+--ignore-dir=log
+--ignore-dir=tmp
