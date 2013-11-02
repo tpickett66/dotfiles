@@ -1,0 +1,17 @@
+[user]
+	name = Tyler Pickett
+	email = t.pickett66@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[push]
+	default = simple
+[core]
+	excludesfile = /Users/tylerpickett/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
