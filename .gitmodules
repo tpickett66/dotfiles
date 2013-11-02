@@ -13,3 +13,6 @@
 [submodule "home/solarized"]
 	path = home/solarized
 	url = https://github.com/altercation/solarized
+[submodule "home/.oh-my-zsh"]
+	path = home/.oh-my-zsh
+	url = git://github.com/robbyrussell/oh-my-zsh.git
