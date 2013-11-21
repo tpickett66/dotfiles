@@ -87,6 +87,9 @@ endfunction
 " Fuzzy select one of those. Open the selected file with :e.
 nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
 
+" Bind leader F to ack
+nnoremap <leader>F :Ack<space>
+
 " set split options
 set splitright
 set splitbelow
