@@ -46,3 +46,6 @@
 [submodule "home/.vim/bundle/vim-rbenv"]
 	path = home/.vim/bundle/vim-rbenv
 	url = git@github.com:tpope/vim-rbenv.git
+[submodule "home/.vim/bundle/mustache-vim-mode"]
+	path = home/.vim/bundle/mustache-vim-mode
+	url = git@github.com:mustache/vim-mode.git
