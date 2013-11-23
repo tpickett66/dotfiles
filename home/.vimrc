@@ -105,6 +105,7 @@ au FileType python setl sw=2 sts=2 et
 au FileType ruby setl sw=2 sts=2 et
 au FileType javascript setl sw=4 sts=4 et
 au FileType markdown setl sw=4 sts=4 et
+au Filetype go setl sw=4 ts=8 sts=4 noexpandtab
 
 set ml
 set mls=2
