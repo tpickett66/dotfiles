@@ -41,6 +41,12 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+UNAMESTR=`uname`
+
+if type 'go' > /dev/null; then
+  export GOPATH=$HOME/src/go
+fi
+
 # Customize to your needs...
 # Base path including homebrew
 PATH=/usr/local/bin:$PATH
@@ -54,16 +60,24 @@ PATH=$PATH:/usr/X11/bin
 PATH=$PATH:/usr/texbin
 # Git
 PATH=$PATH:/usr/local/git/bin
+
 # Add CUDA
-CUDA_HOME=/usr/local/cuda
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CUDA_HOME/lib
-PATH=$PATH:$CUDA_HOME/bin
+if [ -d /usr/local/cuda ]; then
+  CUDA_HOME=/usr/local/cuda
+  export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CUDA_HOME/lib
+  PATH=$PATH:$CUDA_HOME/bin
+fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+if [ $GOPATH ]; then
+  PATH=$GOPATH/bin:$PATH
+fi
+
 # Make things in my homedir the first to be tried for easy customization
 PATH=~/bin:$PATH
+
 # Finally export our path
 export PATH
 
