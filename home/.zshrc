@@ -68,9 +68,6 @@ if [ -d /usr/local/cuda ]; then
   PATH=$PATH:$CUDA_HOME/bin
 fi
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 if [ $GOPATH ]; then
   PATH=$GOPATH/bin:$PATH
 fi
@@ -87,3 +84,6 @@ export RBENV_ROOT=/usr/local/var/rbenv
 # additional rbenv stuff
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+# if the heroku gem is installed for any version of ruby it fucks
+# the toolbelt so the toolbelt has to be first on the path
+export PATH="/usr/local/heroku/bin:$PATH"
