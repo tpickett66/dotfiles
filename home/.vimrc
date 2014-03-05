@@ -112,6 +112,9 @@ au Filetype go setl sw=4 ts=8 sts=4 noexpandtab
 au Filetype css setl sw=4 sts=4 et
 au Filetype scss setl sw=4 sts=4 et
 
+" custom filetype mappings
+au BufNewFile,BufRead *.prawn set filetype=ruby
+
 set ml
 set mls=2
 " Fuck whitespace
