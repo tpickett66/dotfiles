@@ -16,6 +16,9 @@ set t_ti= t_te=
 " turn on syntax highlighting
 syntax on
 
+" ensure backspace isn't fucked
+set backspace=2
+
 " turn on auto indent
 set expandtab
 set softtabstop=2
