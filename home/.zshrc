@@ -18,6 +18,7 @@ alias brails="bundle exec rails"
 alias brake="bundle exec rake"
 alias bspec="bundle exec rspec"
 alias bforeman='bundle exec foreman'
+alias birb='bundle exec irb'
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
