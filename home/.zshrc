@@ -85,3 +85,5 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # if the heroku gem is installed for any version of ruby it fucks
 # the toolbelt so the toolbelt has to be before rbenv on the path
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export EDITOR=vim
