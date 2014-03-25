@@ -76,15 +76,12 @@ fi
 # Make things in my homedir the first to be tried for easy customization
 PATH=~/bin:$PATH
 
-# Finally export our path
-export PATH
-
 # because we hombrewed rbenv
 export RBENV_ROOT=/usr/local/var/rbenv
 
-# additional rbenv stuff
+# additional rbenv stuff which munges our path
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # if the heroku gem is installed for any version of ruby it fucks
-# the toolbelt so the toolbelt has to be first on the path
+# the toolbelt so the toolbelt has to be before rbenv on the path
 export PATH="/usr/local/heroku/bin:$PATH"
