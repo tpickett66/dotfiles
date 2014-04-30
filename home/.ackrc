@@ -5,10 +5,9 @@
 --follow
 
 # additional extension for types
---type-set=haml=.haml
---type-set=erb=.erb
 --type-add=html=.haml
 --type-add=html=.html.erb
+--type-add=html=.html.slim
 --type-add=css=.scss
 --type-add=css=.sass
 
@@ -17,6 +16,9 @@
 
 # custom types
 --type-set=cuke=.feature
+--type-set=haml=.haml
+--type-set=slim=.slim
+--type-set=erb=.erb
 
 # don't search logs or tmp folders
 --ignore-dir=log
