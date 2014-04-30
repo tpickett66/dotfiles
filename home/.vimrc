@@ -119,5 +119,14 @@ au BufNewFile,BufRead *.prawn set filetype=ruby
 
 set ml
 set mls=2
+
+" set spell check language
+set spelllang=en_us
+
+" turn on spell check for certain file types
+au Filetype markdown setlocal spell
+au Filetype gitcommit setlocal spell
+au Filetype cucumber setlocal spell
+
 " Fuck whitespace
 autocmd FileType c,cpp,java,php,ruby,eruby,haml,sass,scss,python,html,css,javascript,cucumber,slim,coffee,yaml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))"
