@@ -107,11 +107,12 @@ nnoremap <C-H> <C-W><C-H>
 " set filetype specific indention settings
 au FileType python setl sw=2 sts=2 et
 au FileType ruby setl sw=2 sts=2 et
-au FileType javascript setl sw=4 sts=4 et
+au FileType javascript setl sw=2 sts=2 et
 au FileType markdown setl sw=4 sts=4 et
 au Filetype go setl sw=4 ts=8 sts=4 noexpandtab
 au Filetype css setl sw=4 sts=4 et
 au Filetype scss setl sw=4 sts=4 et
+au Filetype gitconfig setl sw=4 ts=4 sts=4 noexpandtab
 
 " custom filetype mappings
 au BufNewFile,BufRead *.prawn set filetype=ruby
