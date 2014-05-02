@@ -57,7 +57,7 @@ set incsearch " jump to our search results as we type search
 " don't polute our working dir w/ backups and swap files
 set backup
 set backupdir=~/.vim/backup
-set directory=~/.vim/tmp
+set directory=~/.vim/tmp//
 
 " mark column 80 if we're running macVim
 if has("gui_running")
