@@ -55,3 +55,6 @@
 [submodule "home/.vim/bundle/vim-yaml"]
 	path = home/.vim/bundle/vim-yaml
 	url = git@github.com:avakhov/vim-yaml.git
+[submodule "home/.vim/bundle/vim-ruby-refactoring"]
+	path = home/.vim/bundle/vim-ruby-refactoring
+	url = git@github.com:ecomba/vim-ruby-refactoring.git
