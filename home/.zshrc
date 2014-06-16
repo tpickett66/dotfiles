@@ -45,8 +45,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-UNAMESTR=`uname`
-
 if type 'go' > /dev/null; then
   export GOPATH=$HOME/src/go
 fi
@@ -78,12 +76,6 @@ fi
 
 # Make things in my homedir the first to be tried for easy customization
 PATH=~/bin:$PATH
-
-# because we hombrewed rbenv
-export RBENV_ROOT=/usr/local/var/rbenv
-
-# additional rbenv stuff which munges our path
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # if the heroku gem is installed for any version of ruby it fucks
 # the toolbelt so the toolbelt has to be before rbenv on the path
