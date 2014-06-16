@@ -17,8 +17,8 @@
 	trustExitCode = true
 
 
-[aliases]
-  gerrit-submit = "!bash -c ' \
+[alias]
+	gerrit-submit = "!bash -c ' \
         local_ref=$(git symbolic-ref HEAD); \
         local_name=${local_ref##refs/heads/}; \
         remote=$(git config branch.\"$local_name\".remote || echo origin); \
@@ -32,3 +32,9 @@
         if [[ $3 != \"\"  ]]; then r=\"$r --reviewer=$3\"; fi; \
         if [[ $4 != \"\"  ]]; then r=\"$r --reviewer=$4\"; fi; \
         git push --receive-pack=\"gerrit receive-pack $r\" $remote HEAD:$remote_review_ref'"
+	gs = "!git gerrit-submit"
+
+	gerrit-branch = "!bash -c 'git checkout -b $1 origin/master' -"
+	gb = "!git gerrit-branch"
+
+	ca = "commit --amend"
