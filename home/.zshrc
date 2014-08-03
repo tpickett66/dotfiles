@@ -15,13 +15,11 @@ ZSH_THEME="robbyrussell"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # lazy making aliases
-alias bcuke="bundle exec cucumber"
-alias bguard="bundle exec guard"
-alias brails="bundle exec rails"
-alias brake="bundle exec rake"
-alias bspec="bundle exec rspec"
-alias bforeman='bundle exec foreman'
-alias birb='bundle exec irb'
+alias bi='bundle install --binstubs'
+
+# remove ALL THE GEMS!
+# http://geekystuff.net/2009/01/14/remove-all-ruby-gems/
+alias clean-gems='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
