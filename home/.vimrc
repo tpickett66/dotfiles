@@ -118,8 +118,12 @@ au Filetype gitconfig setl sw=4 ts=4 sts=4 noexpandtab
 " custom filetype mappings
 au BufNewFile,BufRead *.prawn set filetype=ruby
 
+" enable modelines
 set ml
 set mls=2
+
+" always show the current file path
+set ls=2
 
 " set spell check language
 set spelllang=en_us
@@ -130,4 +134,4 @@ au Filetype gitcommit setlocal spell
 au Filetype cucumber setlocal spell
 
 " Fuck whitespace
-autocmd FileType c,cpp,java,php,ruby,eruby,haml,sass,scss,python,html,css,javascript,cucumber,slim,coffee,yaml,sh autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))"
+autocmd FileType c,cpp,java,php,ruby,eruby,haml,sass,scss,python,html,css,javascript,cucumber,slim,coffee,yaml,sh,scala autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))"
