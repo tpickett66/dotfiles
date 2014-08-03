@@ -1,0 +1,10 @@
+#! /bin/sh
+
+command=$1
+shift 1
+
+if [[ -x "bin/$command" ]]; then
+  exec bin/$command "$@"
+else
+  exec bundle exec $command "$@"
+fi

@@ -2,3 +2,4 @@ home/.vim/tmp/*
 home/.vim/backup/*
 home/.vim/.netrwhist
 *.DS_Store
+home/bin/selecta
