@@ -23,3 +23,4 @@
 # don't search logs or tmp folders
 --ignore-dir=log
 --ignore-dir=tmp
+--ignore-dir=.bundle
