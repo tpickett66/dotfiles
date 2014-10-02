@@ -4,6 +4,9 @@ ZSH=$HOME/.oh-my-zsh
 # beacause oh-my-zsh and tmux don't get along some times
 export DISABLE_AUTO_TITLE=true
 
+# Make ansible a little more fun
+export ANSIBLE_COW_SELECTION=random
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
