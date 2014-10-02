@@ -92,6 +92,12 @@ nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
 nnoremap <leader>sf :call SelectaCommand("find * -type f", "", ":sp")<cr>
 nnoremap <leader>vf :call SelectaCommand("find * -type f", "", ":vs")<cr>
 
+function! BeautifyXMLFile()
+  exec a:firstline.",".a:lastline.'s/></>\r</g'
+  exec "normal gg"
+  exec "normal =G"
+endfunction
+
 " Bind leader F to ack
 nnoremap <leader>F :Ack<space>
 
