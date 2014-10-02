@@ -61,3 +61,6 @@
 [submodule "home/.vim/bundle/vim-scala"]
 	path = home/.vim/bundle/vim-scala
 	url = git@github.com:derekwyatt/vim-scala.git
+[submodule "home/.vim/bundle/vim-ansible-yaml"]
+	path = home/.vim/bundle/vim-ansible-yaml
+	url = git://github.com/chase/vim-ansible-yaml.git
