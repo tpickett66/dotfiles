@@ -19,6 +19,8 @@ ZSH_THEME="robbyrussell"
 
 # lazy making aliases
 alias bi='bundle install --binstubs'
+alias vim='TERM=xterm-256color vim'
+alias emacs='TERM=xterm emacs'
 
 # remove ALL THE GEMS!
 # http://geekystuff.net/2009/01/14/remove-all-ruby-gems/
