@@ -54,17 +54,19 @@ fi
 
 # Customize to your needs...
 # Base path including homebrew
-PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 # Android SDK
-PATH=$PATH:/Users/tylerpickett/android-sdk/platform-tools:/Users/tylerpickett/android-sdk/tools
+export PATH=$PATH:/Users/tylerpickett/android-sdk/platform-tools:/Users/tylerpickett/android-sdk/tools
 # mysql
-PATH=$PATH:/usr/local/mysql/bin
+export PATH=$PATH:/usr/local/mysql/bin
 # X11
-PATH=$PATH:/usr/X11/bin
+export PATH=$PATH:/usr/X11/bin
 # TeX
-PATH=$PATH:/usr/texbin
+export PATH=$PATH:/usr/texbin
 # Git
-PATH=$PATH:/usr/local/git/bin
+export PATH=$PATH:/usr/local/git/bin
+# Node
+export PATH=$HOME/.node/bin:$PATH
 
 # Add CUDA
 if [ -d /usr/local/cuda ]; then
@@ -78,10 +80,15 @@ if [ $GOPATH ]; then
 fi
 
 # Make things in my homedir the first to be tried for easy customization
-PATH=~/bin:$PATH
+export PATH=~/bin:$PATH
 
 # if the heroku gem is installed for any version of ruby it fucks
 # the toolbelt so the toolbelt has to be before rbenv on the path
 export PATH="/usr/local/heroku/bin:$PATH"
 
 export EDITOR=vim
+
+# goodies for dinghy
+export DOCKER_HOST=tcp://127.0.0.1:2376
+export DOCKER_CERT_PATH=/Users/tpickett/.dinghy/certs
+export DOCKER_TLS_VERIFY=1#
