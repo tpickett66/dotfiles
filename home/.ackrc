@@ -1,8 +1,8 @@
 # only be case sensitive if there is mixed case
 --smart-case
 
-# follow symlinks
---follow
+# don't follow symlinks
+--no-follow
 
 # additional extension for types
 --type-add=html=.haml

@@ -18,9 +18,9 @@ ZSH_THEME="robbyrussell"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # lazy making aliases
-alias bi='bundle install --binstubs'
 alias vim='TERM=xterm-256color vim'
 alias emacs='TERM=xterm emacs'
+alias dc='docker-compose'
 
 # remove ALL THE GEMS!
 # http://geekystuff.net/2009/01/14/remove-all-ruby-gems/
