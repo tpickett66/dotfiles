@@ -77,6 +77,9 @@ if [ $GOPATH ]; then
   PATH=$GOPATH/bin:$PATH
 fi
 
+# Add ccache to our path so we can take advantage of it
+PATH=/usr/local/opt/ccache/libexec:$PATH
+
 # Make things in my homedir the first to be tried for easy customization
 PATH=~/bin:$PATH
 
