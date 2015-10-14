@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'capybara'
+require 'capybara/poltergeist'
+require 'highline/import'
+
+username = ask("Username: ")
+password = ask("Password: ") { |q| q.echo = "x" }
+
+session = Capybara::Session.new(:poltergeist)
+session.visit("https://docker.insops.net")
+session.fill_in "Username", with: username
+session.fill_in "Password", with: password
+puts "Logging in..."
+session.click_on "LOGIN"
+sleep 1
+session.click_on "Docker Client Login"
+docker_login = session.find(".login-command").text
+puts "Running Docker Login Command: #{docker_login}"
+exec docker_login

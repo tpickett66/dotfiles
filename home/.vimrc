@@ -88,9 +88,9 @@ endfunction
 
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
-nnoremap <leader>sf :call SelectaCommand("find * -type f", "", ":sp")<cr>
-nnoremap <leader>vf :call SelectaCommand("find * -type f", "", ":vs")<cr>
+nnoremap <leader>f :call SelectaCommand("find * -type f -not -path \"*node_modules*\"", "", ":e")<cr>
+nnoremap <leader>sf :call SelectaCommand("find * -type f -not -path \"*node_modules*\"", "", ":sp")<cr>
+nnoremap <leader>vf :call SelectaCommand("find * -type f -not -path \"*node_modules*\"", "", ":vs")<cr>
 
 function! BeautifyXMLFile()
   exec a:firstline.",".a:lastline.'s/></>\r</g'
@@ -114,7 +114,7 @@ nnoremap <C-H> <C-W><C-H>
 " set filetype specific indention settings
 au FileType python setl sw=4 sts=4 et ts=8
 au FileType ruby setl sw=2 sts=2 et
-au FileType javascript setl sw=2 sts=2 et
+au FileType javascript setl sw=4 sts=4 et
 au FileType markdown setl sw=4 sts=4 et
 au Filetype go setl sw=4 ts=8 sts=4 noexpandtab
 au Filetype css setl sw=4 sts=4 et
@@ -140,4 +140,4 @@ au Filetype gitcommit setlocal spell
 au Filetype cucumber setlocal spell
 
 " Fuck whitespace
-autocmd FileType c,cpp,java,php,ruby,eruby,haml,sass,scss,python,html,css,javascript,cucumber,slim,coffee,yaml,sh,scala autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))"
+autocmd FileType c,cpp,java,php,ruby,eruby,haml,sass,scss,python,html,css,javascript,cucumber,slim,coffee,yaml,sh,scala,rust,xml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))"

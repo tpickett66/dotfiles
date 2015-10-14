@@ -41,3 +41,4 @@
 	gb = "!git gerrit-branch"
 
 	ca = "commit --amend"
+	workprofile = config user.email \"tpickett@instructure.com\"
