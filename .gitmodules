@@ -64,9 +64,6 @@
 [submodule "home/.vim/bundle/vim-ansible-yaml"]
 	path = home/.vim/bundle/vim-ansible-yaml
 	url = git://github.com/chase/vim-ansible-yaml.git
-[submodule "home/.emacs.d/lisp/evil"]
-	path = home/.emacs.d/lisp/evil
-	url = git://gitorious.org/evil/evil.git
 [submodule "home/.emacs.d/themes/emacs-color-theme-solarized"]
 	path = home/.emacs.d/themes/emacs-color-theme-solarized
 	url = git@github.com:sellout/emacs-color-theme-solarized.git
