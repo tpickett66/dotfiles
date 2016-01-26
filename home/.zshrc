@@ -68,13 +68,6 @@ export PATH=$PATH:/usr/local/git/bin
 # Node
 export PATH=$HOME/.node/bin:$PATH
 
-# Add CUDA
-if [ -d /usr/local/cuda ]; then
-  CUDA_HOME=/usr/local/cuda
-  export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CUDA_HOME/lib
-  PATH=$PATH:$CUDA_HOME/bin
-fi
-
 if [ $GOPATH ]; then
   PATH=$GOPATH/bin:$PATH
 fi
