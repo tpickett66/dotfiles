@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -e
+
+ARGV=("$@")
+BRANCH=${ARGV[0]}
+
+if [[ $# -ne 1 ]]; then
+  echo "Usage:"
+  echo "   checkout-canvas-release <git ref>"
+  echo ""
+  echo "Checkout a specific release of Canvas including any plugins found in the gems/plugins directory"
+  exit 1
+fi
+
+git fetch
+git checkout $BRANCH
+git pull --ff
+
+CWD=`pwd`
+PLUGINS=(`find gems -type d -name .git | cut -d '/' -f 1-3`)
+
+for PLUGIN in "${PLUGINS[@]}"
+do
+  echo "Checking out ${PLUGIN}"
+  cd $PLUGIN
+
+  set +e
+  git fetch \
+  && git checkout $BRANCH \
+  && git pull --ff
+  set -e
+
+  cd $CWD
+done
