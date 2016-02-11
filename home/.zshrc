@@ -54,11 +54,7 @@ fi
 
 # Customize to your needs...
 # Base path including homebrew
-export PATH=/usr/local/bin:$PATH
-# Android SDK
-export PATH=$PATH:/Users/tylerpickett/android-sdk/platform-tools:/Users/tylerpickett/android-sdk/tools
-# mysql
-export PATH=$PATH:/usr/local/mysql/bin
+export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 # X11
 export PATH=$PATH:/usr/X11/bin
 # TeX
