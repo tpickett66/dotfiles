@@ -73,3 +73,6 @@
 [submodule "home/.vim/bundle/rust.vim"]
 	path = home/.vim/bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
+[submodule "home/.vim/bundle/vim-qml"]
+	path = home/.vim/bundle/vim-qml
+	url = git@github.com:peterhoeg/vim-qml.git

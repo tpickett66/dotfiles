@@ -121,7 +121,7 @@ au FileType markdown setl sw=4 sts=4 et
 au FileType python setl sw=4 sts=4 et ts=8
 au FileType ruby setl sw=2 sts=2 et
 au Filetype scss setl sw=4 sts=4 et
-
+au Filetype qml setl sw=4 sts=4 et
 
 " custom filetype mappings
 au BufNewFile,BufRead *.prawn set filetype=ruby
