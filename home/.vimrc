@@ -142,5 +142,11 @@ au Filetype markdown setlocal spell
 au Filetype gitcommit setlocal spell
 au Filetype cucumber setlocal spell
 
+"--- Copy to system register
+map <leader>c "*y
+
+"--- Paste from system register
+map <leader>v "*p
+
 " Fuck whitespace
 autocmd FileType c,cpp,java,php,ruby,eruby,haml,sass,scss,python,html,css,javascript,cucumber,slim,coffee,yaml,sh,scala,rust,xml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))"
