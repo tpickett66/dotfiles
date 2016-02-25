@@ -3,4 +3,6 @@
 *.DS_Store
 *.bundle/*
 
+.byebug_history
+
 gems/plugins
