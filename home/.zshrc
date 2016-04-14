@@ -19,7 +19,7 @@ ZSH_THEME="robbyrussell"
 
 # lazy making aliases
 alias vim='TERM=xterm-256color vim'
-alias emacs='TERM=xterm emacs'
+# alias emacs='TERM=xterm emacs'
 alias dc='docker-compose'
 
 # remove ALL THE GEMS!
@@ -44,7 +44,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(battery git)
 
 source $ZSH/oh-my-zsh.sh
 
