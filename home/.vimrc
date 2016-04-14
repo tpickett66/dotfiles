@@ -59,11 +59,8 @@ set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp//
 
-" mark column 80 if we're running macVim
-if has("gui_running")
-  set colorcolumn=80
-  set guifont=Monaco:h13
-endif
+" mark column 80
+let &colorcolumn=join(range(80, 80), ",")
 
 " set some custom key mappings
 " open nerdtree on Ctrl-n
