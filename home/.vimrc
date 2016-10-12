@@ -110,7 +110,6 @@ nnoremap <C-H> <C-W><C-H>
 
 " set filetype specific indention settings
 au Filetype css setl sw=2 sts=2 et
-au Filetype scss setl sw=2 sts=2 et
 au Filetype cpp setl sw=4 sts=4 et
 au Filetype gitconfig setl sw=4 ts=4 sts=4 noexpandtab
 au Filetype go setl sw=4 ts=4 sts=4 noet
@@ -118,6 +117,7 @@ au FileType javascript setl sw=2 sts=2 et
 au FileType markdown setl sw=4 sts=4 et
 au FileType python setl sw=4 sts=4 et ts=8
 au FileType ruby setl sw=2 sts=2 et
+au Filetype scss setl sw=2 sts=2 et
 au Filetype sh setl sw=4 sts=4 et
 au Filetype qml setl sw=4 sts=4 et
 
