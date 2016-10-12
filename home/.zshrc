@@ -13,14 +13,11 @@ export ANSIBLE_COW_SELECTION=random
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # lazy making aliases
 alias vim='TERM=xterm-256color vim'
 # alias emacs='TERM=xterm emacs'
 alias dc='docker-compose'
+alias insecure-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-security --user-data-dir=/Users/$USER/Library/Application\\ Support/Google/ChromeInsecure > /dev/null 2>&1 &"
 
 # remove ALL THE GEMS!
 # http://geekystuff.net/2009/01/14/remove-all-ruby-gems/

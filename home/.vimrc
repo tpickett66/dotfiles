@@ -85,9 +85,9 @@ endfunction
 
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader>f :call SelectaCommand("find * -type f -not -path \"*node_modules*\"", "", ":e")<cr>
-nnoremap <leader>sf :call SelectaCommand("find * -type f -not -path \"*node_modules*\"", "", ":sp")<cr>
-nnoremap <leader>vf :call SelectaCommand("find * -type f -not -path \"*node_modules*\"", "", ":vs")<cr>
+nnoremap <leader>f :call SelectaCommand("find * -type f -not -path \"tmp*\" -not -path \"*node_modules*\"", "", ":e")<cr>
+nnoremap <leader>sf :call SelectaCommand("find * -type f -not -path \"tmp*\" -not -path \"*node_modules*\"", "", ":sp")<cr>
+nnoremap <leader>vf :call SelectaCommand("find * -type f -not -path \"tmp*\" -not -path \"*node_modules*\"", "", ":vs")<cr>
 
 function! BeautifyXMLFile()
   exec a:firstline.",".a:lastline.'s/></>\r</g'
@@ -109,15 +109,15 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " set filetype specific indention settings
-au Filetype css setl sw=4 sts=4 et
+au Filetype css setl sw=2 sts=2 et
+au Filetype scss setl sw=2 sts=2 et
 au Filetype cpp setl sw=4 sts=4 et
 au Filetype gitconfig setl sw=4 ts=4 sts=4 noexpandtab
-au Filetype go setl sw=4 ts=8 sts=4 noexpandtab
-au FileType javascript setl sw=4 sts=4 et
+au Filetype go setl sw=4 ts=4 sts=4 noet
+au FileType javascript setl sw=2 sts=2 et
 au FileType markdown setl sw=4 sts=4 et
 au FileType python setl sw=4 sts=4 et ts=8
 au FileType ruby setl sw=2 sts=2 et
-au Filetype scss setl sw=4 sts=4 et
 au Filetype sh setl sw=4 sts=4 et
 au Filetype qml setl sw=4 sts=4 et
 
@@ -150,3 +150,7 @@ autocmd FileType c,cpp,java,php,ruby,eruby,haml,sass,scss,python,html,css,javasc
 
 " Allow us to insert tabs even when expandtab is on
 :inoremap <S-Tab> <C-V><Tab>
+
+" Allow project specific vimrc files
+set exrc
+set secure
