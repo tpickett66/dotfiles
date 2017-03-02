@@ -17,6 +17,7 @@ ZSH_THEME="robbyrussell"
 alias vim='TERM=xterm-256color vim'
 # alias emacs='TERM=xterm emacs'
 alias dc='docker-compose'
+alias dcr='docker-compose run --rm'
 alias insecure-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-security --user-data-dir=/Users/$USER/Library/Application\\ Support/Google/ChromeInsecure > /dev/null 2>&1 &"
 
 # remove ALL THE GEMS!
@@ -65,20 +66,21 @@ if [ $GOPATH ]; then
   PATH=$GOPATH/bin:$PATH
 fi
 
-# Add ccache to our path so we can take advantage of it
-PATH=/usr/local/opt/ccache/libexec:$PATH
+eval "$(rbenv init -)"
 
 # Make things in my homedir the first to be tried for easy customization
 export PATH=~/bin:$PATH
 
-# if the heroku gem is installed for any version of ruby it fucks
-# the toolbelt so the toolbelt has to be before rbenv on the path
-export PATH="/usr/local/heroku/bin:$PATH"
-
 export EDITOR=vim
 
 # goodies for dinghy
-export DOCKER_HOST=tcp://192.168.2.132:2376
+export DOCKER_HOST=tcp://192.168.99.100:2376
 export DOCKER_CERT_PATH=/Users/tpickett/.docker/machine/machines/dinghy
 export DOCKER_TLS_VERIFY=1
 export DOCKER_MACHINE_NAME=dinghy
+
+# Finally import system local stuff, if present
+if [ -f ~/.zshrc-local ]
+then
+  source ~/.zshrc-local
+fi
