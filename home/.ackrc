@@ -21,6 +21,7 @@
 --type-set=slim=.slim
 --type-set=erb=.erb
 --type-set=csv=.csv
+--type-set=ragel=.rl
 
 # don't search logs or tmp folders
 --ignore-dir=log
