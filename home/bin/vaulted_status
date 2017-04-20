@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+CLEAR = "%{\e[00m%}"
+WHITE = "%{\e[37m%}"
+RED_BG = "%{\e[41m%}"
+
+vaulted_env = ENV['VAULTED_ENV']
+if vaulted_env
+  print " #{RED_BG}#{WHITE}VAULT: #{vaulted_env}#{CLEAR}"
+end

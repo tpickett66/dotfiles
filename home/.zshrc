@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+fpath+=~/.zfunc
+
 # beacause oh-my-zsh and tmux don't get along some times
 export DISABLE_AUTO_TITLE=true
 
@@ -11,7 +13,7 @@ export ANSIBLE_COW_SELECTION=random
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="gallifrey"
 
 # lazy making aliases
 alias vim='TERM=xterm-256color vim'
@@ -78,6 +80,11 @@ export DOCKER_HOST=tcp://192.168.99.100:2376
 export DOCKER_CERT_PATH=/Users/tpickett/.docker/machine/machines/dinghy
 export DOCKER_TLS_VERIFY=1
 export DOCKER_MACHINE_NAME=dinghy
+
+batt='$(battery_indicator)'
+vault='$(vaulted_status)'
+
+RPROMPT="${return_code} ${batt}${vault}"
 
 # Finally import system local stuff, if present
 if [ -f ~/.zshrc-local ]

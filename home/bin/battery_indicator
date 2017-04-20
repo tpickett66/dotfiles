@@ -1,0 +1,86 @@
+#!/usr/bin/env ruby
+
+require 'bigdecimal'
+require 'logger'
+
+# LOG_FILE = File.expand_path("~/tmp/battery_indicator.log")
+# LOG = Logger.new(LOG_FILE)
+
+BATTERY = '🔋'
+CHECK = '✔'
+HEART = '♥'
+LIGHTNING = '⚡'
+
+CLEAR = "%{\e[00m%}"
+GREEN = "%{\e[32m%}"
+RED = "%{\e[31m%}"
+WHITE = "%{\e[37m%}"
+YELLOW = "%{\e[33m%}"
+
+class PowerInfo
+  CURRENT_CHARGE_PATTERN = /"CurrentCapacity" = (?<capacity>\d+)/
+  FULL_PATTERN = /"FullyCharged" = (?<full>\w+)/
+  MAX_CHARGE_PATTERN = /"MaxCapacity" = (?<capacity>\d+)/
+  PLUGGED_IN_PATTERN = /"ExternalConnected"\s+=\s+(?<connected>\w+)/
+
+  def battery_status_symbol
+    if full? && plugged_in?
+      [GREEN, CHECK, CLEAR].join("")
+    elsif plugged_in?
+      [LIGHTNING, CLEAR].join("")
+    else
+      [YELLOW, BATTERY, CLEAR].join("")
+    end
+  end
+
+  # Battery level on a scale from 0 to 10
+  def charge_level
+    ((current_charge / max_charge) * 10).round
+  end
+
+  def current_charge
+    BigDecimal.new(extract_field(CURRENT_CHARGE_PATTERN))
+  end
+
+  def full?
+    extract_field(FULL_PATTERN, :full).downcase == 'yes'
+  end
+
+  def max_charge
+    BigDecimal.new(extract_field(MAX_CHARGE_PATTERN))
+  end
+
+  def plugged_in?
+    extract_field(PLUGGED_IN_PATTERN, :connected).downcase == 'yes'
+  end
+
+  private
+
+  def battery_info
+    return @battery_info if @battery_info
+    @battery_info = `ioreg -rc AppleSmartBattery`
+  end
+
+  def extract_field(pattern, capture_name = :capacity)
+    pattern.match(battery_info)[capture_name]
+  end
+end
+
+power_info = PowerInfo.new
+
+# LOG.debug(sprintf(
+#   "Max: %d Current: %d Reported Level: %d Raw Level: %0.4f",
+#   power_info.max_charge,
+#   power_info.current_charge,
+#   power_info.charge_level,
+#   power_info.current_charge / power_info.max_charge,
+# ))
+
+output_buffer = [RED]
+power_info.charge_level.times { output_buffer << HEART }
+output_buffer << WHITE
+(10 - power_info.charge_level).times { output_buffer << HEART }
+output_buffer << CLEAR
+output_buffer << power_info.battery_status_symbol
+
+print output_buffer.join('')

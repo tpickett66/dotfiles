@@ -3,6 +3,10 @@
 HEART='♥'
 LIGHTNING='⚡'
 
+CLEAR=$(tput sgr0)
+RED=$(tput setaf 1)
+WHITE=$(tput setaf 7)
+
 if [[ `uname` == 'Linux' ]]; then
   current_charge=$(cat /proc/acpi/battery/BAT1/state | grep 'remaining capacity' | awk '{print $3}')
   total_charge=$(cat /proc/acpi/battery/BAT1/info | grep 'last full capacity' | awk '{print $4}')
@@ -18,15 +22,15 @@ if [[ $charged_slots -gt 10 ]]; then
   charged_slots=10
 fi
 
-echo -n '#[fg=red]'
-for i in `seq 1 $charged_slots`; do echo -n "$HEART"; done
+echo -n "${CLEAR}${RED}"
+for i in `seq 1 $charged_slots`; do echo -n "${HEART}"; done
 
+echo -n "${WHITE}"
 if [[ $charged_slots -lt 10 ]]; then
-  echo -n '#[fg=white]'
   for i in `seq 1 $(echo "10-$charged_slots" | bc)`; do echo -n "$HEART"; done
 fi
+echo -n "${CLEAR}"
 
 if [[ $charging == 1 ]]; then
-  echo -n '#[fg=yellow]'
   echo -n $LIGHTNING
 fi
