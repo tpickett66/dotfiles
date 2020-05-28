@@ -1,10 +1,6 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby --disable-gems
 
 require 'bigdecimal'
-require 'logger'
-
-# LOG_FILE = File.expand_path("~/tmp/battery_indicator.log")
-# LOG = Logger.new(LOG_FILE)
 
 BATTERY = '🔋'
 CHECK = '✔'
@@ -67,14 +63,6 @@ class PowerInfo
 end
 
 power_info = PowerInfo.new
-
-# LOG.debug(sprintf(
-#   "Max: %d Current: %d Reported Level: %d Raw Level: %0.4f",
-#   power_info.max_charge,
-#   power_info.current_charge,
-#   power_info.charge_level,
-#   power_info.current_charge / power_info.max_charge,
-# ))
 
 output_buffer = [RED]
 power_info.charge_level.times { output_buffer << HEART }
