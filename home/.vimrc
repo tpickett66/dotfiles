@@ -113,13 +113,14 @@ au Filetype css setl sw=2 sts=2 et
 au Filetype cpp setl sw=4 sts=4 et
 au Filetype gitconfig setl sw=4 ts=4 sts=4 noexpandtab
 au Filetype go setl sw=4 ts=4 sts=4 noet
+au Filetype groovy setl sw=2 sts=2 et
 au FileType javascript setl sw=2 sts=2 et
 au FileType markdown setl sw=4 sts=4 et
 au FileType python setl sw=4 sts=4 et ts=8
+au Filetype qml setl sw=4 sts=4 et
 au FileType ruby setl sw=2 sts=2 et
 au Filetype scss setl sw=2 sts=2 et
 au Filetype sh setl sw=4 sts=4 et
-au Filetype qml setl sw=4 sts=4 et
 
 " custom filetype mappings
 au BufNewFile,BufRead *.prawn set filetype=ruby
@@ -146,7 +147,7 @@ map <leader>c "*y
 map <leader>v "*p
 
 " Fuck whitespace
-autocmd FileType c,cpp,java,php,ruby,eruby,haml,sass,scss,python,html,css,javascript,cucumber,slim,coffee,yaml,sh,scala,rust,xml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))"
+autocmd FileType c,cpp,groovy,java,php,ruby,eruby,haml,sass,scss,python,html,css,javascript,cucumber,slim,coffee,yaml,sh,scala,rust,xml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))"
 
 " Allow us to insert tabs even when expandtab is on
 :inoremap <S-Tab> <C-V><Tab>

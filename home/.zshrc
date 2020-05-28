@@ -75,16 +75,26 @@ export PATH=~/bin:$PATH
 
 export EDITOR=vim
 
-# goodies for dinghy
-export DOCKER_HOST=tcp://192.168.99.100:2376
-export DOCKER_CERT_PATH=/Users/tpickett/.docker/machine/machines/dinghy
-export DOCKER_TLS_VERIFY=1
-export DOCKER_MACHINE_NAME=dinghy
+vaulted_env() {
+  [[ -n $VAULTED_ENV ]] || return
+  if datetest now --lt $VAULTED_ENV_EXPIRATION; then
+    local diff=$(datediff now $VAULTED_ENV_EXPIRATION -f %Hh%Mm)
+  else
+    local diff="%B%F{black}expired%f%b"
+  fi
+  echo -n "%U%F{magenta}%Bvaulted{%b%F{cyan}$VAULTED_ENV:l%f%F{black}%B-%b%F{cyan}$diff%F{magenta}%B}%b%f%u"
+}
 
 batt='$(battery_indicator)'
-vault='$(vaulted_status)'
+vault='$(vaulted_env)'
 
-RPROMPT="${return_code} ${batt}${vault}"
+RPROMPT="${return_code} ${vault}"
+
+eval "$( command rapture shell-init )"
+
+export CDPATH=.:~/src
+
+eval $(thefuck --alias)
 
 # Finally import system local stuff, if present
 if [ -f ~/.zshrc-local ]

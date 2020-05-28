@@ -22,6 +22,7 @@
 --type-set=erb=.erb
 --type-set=csv=.csv
 --type-set=ragel=.rl
+--type-set=terraform=.tf
 
 # don't search logs or tmp folders
 --ignore-dir=log

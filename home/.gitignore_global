@@ -11,3 +11,4 @@ gems/plugins
 
 .ensime
 .idea
+*.iml
