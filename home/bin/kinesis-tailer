@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+require 'aws-sdk'
+require 'optparse'
+
+options = {}
+OptionParser.new do |opts|
+  opts.on('-e', '--endpoint [ENDPOINT]', 'The AWS endpoint to use for overriding the default while testing locally') do |val|
+    puts " got -e"
+    options[:endpoint] = val
+  end
+
+  opts.on('-s', '--stream-name [STREAM_NAME]', 'The stream name') do |val|
+    options[:stream_name] = val
+  end
+end.parse!
+
+stream_name = options[:stream_name]
+
+client_options = {
+  region: 'local-dev',
+}
+
+client_options[:endpoint] = options[:endpoint] if options[:endpoint]
+puts client_options.inspect
+client = Aws::Kinesis::Client.new(client_options)
+
+stream_description = client.describe_stream(stream_name: options[:stream_name])[:stream_description]
+shard_ids = stream_description[:shards].map { |s| s[:shard_id] }
+
+puts "Tailing #{shard_ids.size} shards"
+threads = shard_ids.map do |shard_id|
+  Thread.new do
+    iterator = client.get_shard_iterator(stream_name: stream_name, shard_id: shard_id, shard_iterator_type: 'LATEST')[:shard_iterator]
+
+    loop do
+      res = client.get_records(shard_iterator: iterator, limit: 100)
+      iterator = res[:next_shard_iterator]
+      records = res[:records]
+      records.each do |record|
+        puts record[:data]
+      end
+      sleep 5 if records.empty?
+    end
+  end
+end
+
+threads.each(&:join)
