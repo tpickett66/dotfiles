@@ -35,7 +35,7 @@ class PowerInfo
   end
 
   def current_charge
-    BigDecimal.new(extract_field(CURRENT_CHARGE_PATTERN))
+    BigDecimal(extract_field(CURRENT_CHARGE_PATTERN))
   end
 
   def full?
@@ -43,7 +43,7 @@ class PowerInfo
   end
 
   def max_charge
-    BigDecimal.new(extract_field(MAX_CHARGE_PATTERN))
+    BigDecimal(extract_field(MAX_CHARGE_PATTERN))
   end
 
   def plugged_in?
