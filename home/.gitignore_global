@@ -12,3 +12,4 @@ gems/plugins
 .ensime
 .idea
 *.iml
+.rakeTasks
