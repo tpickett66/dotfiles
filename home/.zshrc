@@ -68,7 +68,10 @@ if [ $GOPATH ]; then
   PATH=$GOPATH/bin:$PATH
 fi
 
-eval "$(rbenv init -)"
+if [[ -n "$(command -v rbenv)" ]];
+then
+  eval "$(rbenv init -)"
+fi
 
 # Make things in my homedir the first to be tried for easy customization
 export PATH=~/bin:$PATH
@@ -90,11 +93,17 @@ vault='$(vaulted_env)'
 
 RPROMPT="${return_code} ${vault}"
 
-eval "$( command rapture shell-init )"
+if [[ -n "$(command -v rapture)" ]]
+then
+  eval "$( command rapture shell-init )"
+fi
 
 export CDPATH=.:~/src
 
-eval $(thefuck --alias)
+if [[ -n "$(command -v thefuck)" ]]
+then
+  eval $(thefuck --alias)
+fi
 
 # Finally import system local stuff, if present
 if [ -f ~/.zshrc-local ]
