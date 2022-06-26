@@ -1,7 +1,6 @@
 [user]
 	name = Tyler Pickett
-	email = tpickett@instructure.com
-	#email = t.pickett66@gmail.com
+	email = t.pickett66@gmail.com
 [color]
 	diff = auto
 	status = auto
@@ -79,3 +78,7 @@
 	workprofile = config user.email \"tpickett@instructure.com\"
 [credential]
 	helper = osxkeychain
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
