@@ -28,9 +28,6 @@
 [submodule "home/.vim/bundle/vim-cucumber"]
 	path = home/.vim/bundle/vim-cucumber
 	url = git@github.com:tpope/vim-cucumber.git
-[submodule "home/.vim/bundle/vim-rails"]
-	path = home/.vim/bundle/vim-rails
-	url = git@github.com:tpope/vim-rails.git
 [submodule "home/.vim/bundle/vim-javascript"]
 	path = home/.vim/bundle/vim-javascript
 	url = git@github.com:pangloss/vim-javascript.git
@@ -43,9 +40,6 @@
 [submodule "home/.vim/bundle/vim-slim"]
 	path = home/.vim/bundle/vim-slim
 	url = git@github.com:slim-template/vim-slim.git
-[submodule "home/.vim/bundle/vim-rbenv"]
-	path = home/.vim/bundle/vim-rbenv
-	url = git@github.com:tpope/vim-rbenv.git
 [submodule "home/.vim/bundle/mustache-vim-mode"]
 	path = home/.vim/bundle/mustache-vim-mode
 	url = git@github.com:mustache/vim-mode.git
@@ -55,9 +49,6 @@
 [submodule "home/.vim/bundle/vim-ruby-refactoring"]
 	path = home/.vim/bundle/vim-ruby-refactoring
 	url = git@github.com:ecomba/vim-ruby-refactoring.git
-[submodule "home/.vim/bundle/vim-scala"]
-	path = home/.vim/bundle/vim-scala
-	url = git@github.com:derekwyatt/vim-scala.git
 [submodule "home/.vim/bundle/vim-ansible-yaml"]
 	path = home/.vim/bundle/vim-ansible-yaml
 	url = git://github.com/chase/vim-ansible-yaml.git
