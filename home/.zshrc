@@ -16,6 +16,7 @@ export ANSIBLE_COW_SELECTION=random
 ZSH_THEME="gallifrey"
 
 # lazy making aliases
+[ -f '/usr/local/bin/arm-none-eabi-gdb' ] && alias agdb='/usr/local/bin/arm-none-eabi-gdb'
 alias vim='TERM=xterm-256color vim'
 # alias emacs='TERM=xterm emacs'
 alias dc='docker-compose'
@@ -104,6 +105,8 @@ if [[ -n "$(command -v thefuck)" ]]
 then
   eval $(thefuck --alias)
 fi
+
+[ -f "~/esp/esp-idf/export.sh" ] && alias get_idf=". ~/esp/esp-idf/export.sh"
 
 # Finally import system local stuff, if present
 if [ -f ~/.zshrc-local ]
