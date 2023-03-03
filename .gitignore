@@ -3,3 +3,4 @@ home/.vim/backup/*
 home/.vim/.netrwhist
 *.DS_Store
 home/bin/selecta
+home/.oh-my-zsh
