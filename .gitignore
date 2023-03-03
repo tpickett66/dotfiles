@@ -2,5 +2,9 @@ home/.vim/tmp/*
 home/.vim/backup/*
 home/.vim/.netrwhist
 *.DS_Store
-home/bin/selecta
 home/.oh-my-zsh
+
+home/bin/aws-login
+home/bin/selecta
+home/bin/terraform
+home/bin/idea
