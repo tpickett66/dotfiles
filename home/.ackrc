@@ -28,3 +28,5 @@
 --ignore-dir=log
 --ignore-dir=tmp
 --ignore-dir=.bundle
+--ignore-dir=.terraform
+--ignore-dir=node_modules

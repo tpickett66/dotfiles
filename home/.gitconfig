@@ -11,71 +11,25 @@
 	default = simple
 [core]
 	excludesfile = ~/.gitignore_global
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [gc]
 	auto=1
 
 [alias]
-	gerrit-submit = "!bash -c ' \
-        local_ref=$(git symbolic-ref HEAD); \
-        local_name=${local_ref##refs/heads/}; \
-        remote=$(git config branch.\"$local_name\".remote || echo origin); \
-        remote_ref=$(git config branch.\"$local_name\".merge); \
-        remote_name=${remote_ref##refs/heads/}; \
-        remote_review_ref=\"refs/for/$remote_name\"; \
-        r=\"\"; \
-        if [[ $0 != \"\" && $0 != \"bash\"  ]]; then r=\"--reviewer=$0\"; fi; \
-        if [[ $1 != \"\"  ]]; then r=\"$r --reviewer=$1\"; fi; \
-        if [[ $2 != \"\"  ]]; then r=\"$r --reviewer=$2\"; fi; \
-        if [[ $3 != \"\"  ]]; then r=\"$r --reviewer=$3\"; fi; \
-        if [[ $4 != \"\"  ]]; then r=\"$r --reviewer=$4\"; fi; \
-        git push --receive-pack=\"gerrit receive-pack $r\" $remote HEAD:$remote_review_ref'"
-	gs = "!git gerrit-submit"
-
-	gerrit-submit-wip = "!bash -c ' \
-        local_ref=$(git symbolic-ref HEAD); \
-        local_name=${local_ref##refs/heads/}; \
-        remote=$(git config branch.\"$local_name\".remote || echo origin); \
-        remote_ref=$(git config branch.\"$local_name\".merge); \
-        remote_name=${remote_ref##refs/heads/}; \
-        remote_review_ref=\"refs/for/$remote_name%wip\"; \
-        r=\"\"; \
-        if [[ $0 != \"\" && $0 != \"bash\"  ]]; then r=\"--reviewer=$0\"; fi; \
-        if [[ $1 != \"\"  ]]; then r=\"$r --reviewer=$1\"; fi; \
-        if [[ $2 != \"\"  ]]; then r=\"$r --reviewer=$2\"; fi; \
-        if [[ $3 != \"\"  ]]; then r=\"$r --reviewer=$3\"; fi; \
-        if [[ $4 != \"\"  ]]; then r=\"$r --reviewer=$4\"; fi; \
-        git push --receive-pack=\"gerrit receive-pack $r\" $remote HEAD:$remote_review_ref'"
-	gsw = "!git gerrit-submit-wip"
-
-	gerrit-submit-ready = "!bash -c ' \
-        local_ref=$(git symbolic-ref HEAD); \
-        local_name=${local_ref##refs/heads/}; \
-        remote=$(git config branch.\"$local_name\".remote || echo origin); \
-        remote_ref=$(git config branch.\"$local_name\".merge); \
-        remote_name=${remote_ref##refs/heads/}; \
-        remote_review_ref=\"refs/for/$remote_name%ready\"; \
-        r=\"\"; \
-        if [[ $0 != \"\" && $0 != \"bash\"  ]]; then r=\"--reviewer=$0\"; fi; \
-        if [[ $1 != \"\"  ]]; then r=\"$r --reviewer=$1\"; fi; \
-        if [[ $2 != \"\"  ]]; then r=\"$r --reviewer=$2\"; fi; \
-        if [[ $3 != \"\"  ]]; then r=\"$r --reviewer=$3\"; fi; \
-        if [[ $4 != \"\"  ]]; then r=\"$r --reviewer=$4\"; fi; \
-        git push --receive-pack=\"gerrit receive-pack $r\" $remote HEAD:$remote_review_ref'"
-	gsr = "!git gerrit-submit-ready"
-
-	gerrit-branch = "!bash -c 'if [ -z \"${1// }\" ]; then echo \"A branch name is required\"; else git checkout -b \"${1}\" ${2:-origin/master}; fi' -"
-	gb = "!git gerrit-branch"
-
 	ca   = "commit --amend"
 	can  = "commit --amend --no-edit"
 	caan = "commit --all --amend --no-edit"
-	workprofile = config user.email \"tpickett@instructure.com\"
+
+	# Create a new branch starting from latest upstream commit, works within a worktree
+	wb = "!f() { \
+		if [ -z \"${1// }\" ]; then \
+		    echo \"A branch name is required\"; \
+		else \
+			git fetch; \
+		    remote_default=$(git rev-parse --abbrev-ref origin/HEAD); \
+			git checkout --no-track -b $1 $remote_default; \
+		fi \
+	}; f"
+
 [credential]
 	helper = osxkeychain
 [init]

@@ -51,17 +51,25 @@ source $ZSH/oh-my-zsh.sh
 
 if type 'go' > /dev/null; then
   export GOPATH=$HOME/src/go
+
+  # Workaround for the go runtime being sad on M1 silicon sometimes
+  if [[ $(uname -p) -eq "arm" ]]; then
+     export GODEBUG=asyncpreemptoff=1
+  fi
 fi
 
 # Customize to your needs...
 # Base path including homebrew
-export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+if [ -d "/opt/homebrew" ]
+then
+  # Homebrew on Mac silicon
+  export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+else
+export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:$PATH"
+fi
+
 # X11
 export PATH=$PATH:/usr/X11/bin
-# TeX
-export PATH=$PATH:/usr/texbin
-# Git
-export PATH=$PATH:/usr/local/git/bin
 # Node
 export PATH=$HOME/.node/bin:$PATH
 
@@ -71,6 +79,7 @@ fi
 
 if [[ -n "$(command -v rbenv)" ]];
 then
+  export RBENV_ROOT=~/.rbenv
   eval "$(rbenv init -)"
 fi
 
@@ -79,25 +88,7 @@ export PATH=~/bin:$PATH
 
 export EDITOR=vim
 
-vaulted_env() {
-  [[ -n $VAULTED_ENV ]] || return
-  if datetest now --lt $VAULTED_ENV_EXPIRATION; then
-    local diff=$(datediff now $VAULTED_ENV_EXPIRATION -f %Hh%Mm)
-  else
-    local diff="%B%F{black}expired%f%b"
-  fi
-  echo -n "%U%F{magenta}%Bvaulted{%b%F{cyan}$VAULTED_ENV:l%f%F{black}%B-%b%F{cyan}$diff%F{magenta}%B}%b%f%u"
-}
-
-batt='$(battery_indicator)'
-vault='$(vaulted_env)'
-
-RPROMPT="${return_code} ${vault}"
-
-if [[ -n "$(command -v rapture)" ]]
-then
-  eval "$( command rapture shell-init )"
-fi
+RPROMPT="${return_code}"
 
 export CDPATH=.:~/src
 
@@ -106,6 +97,7 @@ then
   eval $(thefuck --alias)
 fi
 
+# this should probably be in the local config
 [ -f "~/esp/esp-idf/export.sh" ] && alias get_idf=". ~/esp/esp-idf/export.sh"
 
 # Finally import system local stuff, if present
@@ -113,3 +105,4 @@ if [ -f ~/.zshrc-local ]
 then
   source ~/.zshrc-local
 fi
+
