@@ -8,3 +8,6 @@ home/bin/aws-login
 home/bin/selecta
 home/bin/terraform
 home/bin/idea
+home/bin/terragrunt
+home/bin/gateway
+home/bin/eksctl
