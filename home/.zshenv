@@ -5,3 +5,5 @@ export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+alias assume=". assume"

@@ -149,6 +149,8 @@ map <leader>v "*p
 " Fuck whitespace
 autocmd FileType c,cpp,groovy,java,php,ruby,eruby,haml,sass,scss,python,html,css,javascript,cucumber,slim,coffee,yaml,sh,scala,rust,xml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))"
 
+autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
+
 " Allow us to insert tabs even when expandtab is on
 :inoremap <S-Tab> <C-V><Tab>
 

@@ -14,6 +14,7 @@
 --type-add=js=.coffee
 --type-add=js=.jsx
 --type-add=js=.jrl
+--type-add=js=.ts
 
 # custom types
 --type-set=cuke=.feature
@@ -23,6 +24,7 @@
 --type-set=csv=.csv
 --type-set=ragel=.rl
 --type-set=terraform=.tf
+--type-set=ts=.ts
 
 # don't search logs or tmp folders
 --ignore-dir=log

@@ -1,6 +1,8 @@
 [user]
 	name = Tyler Pickett
-	email = t.pickett66@gmail.com
+	email = tylerpickett@drata.com
+	signingkey = ~/.ssh/id_ed25519.pub
+	#email = t.pickett66@gmail.com
 [color]
 	diff = auto
 	status = auto
@@ -9,8 +11,9 @@
 	ui = auto
 [push]
 	default = simple
+	autoSetupRemote = true
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/tylerpickett/.gitignore_global
 [gc]
 	auto=1
 
@@ -29,10 +32,25 @@
 			git checkout --no-track -b $1 $remote_default; \
 		fi \
 	}; f"
+	rbo = "!f() { \
+		git fetch; \
+		git rebase origin/$(git branch --show-current); \
+	}; f"
 
 [credential]
-	helper = osxkeychain
+	helper = store
 [init]
 	defaultBranch = main
 [pull]
 	ff = only
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+	template = /Users/tylerpickett/.stCommitMsg
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
